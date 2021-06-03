@@ -6,12 +6,14 @@
 		var clock__round = document.getElementById("clock_round");
 		clock__counter.innerHTML = String(parseInt(input_pause.value));//todo : data from backend
 		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/8';//todo : data from backend
+    	btn.style.display="none";
 		var timer;
-		clearInterval(timer);
+		//clearInterval(timer);
 		timer = window.setInterval(function(){ 
 			clock__counter.innerHTML = String(parseInt(clock__counter.innerHTML) - 1); 
 			if (parseInt(clock__counter.innerHTML) <= 0) {
 				clock__counter.innerHTML = '0';
+				btn.style.display="block";
 				clearInterval(timer);
 			}
 		}, 1000);
@@ -24,6 +26,20 @@
 			return ;
 		}*/
 	//}
+	/*
+	function vanish(){
+  	if(btn1.style.display=="none"){
+    	btn1.style.display="block"
+  		}else{
+    	btn1.style.display="none"
+  		}
+	}
+	*/
+	
+	function closeWindow(){
+  		window.close();
+	}
+	
 </script>
 
 
