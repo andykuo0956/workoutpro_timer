@@ -1,0 +1,89 @@
+<script type="text/javascript">
+	function display() {
+		var btn = document.getElementById("button_start");
+		var input_pause = document.getElementById("input_pause");
+		var clock__counter = document.getElementById("clock");
+		var clock__round = document.getElementById("clock_round");
+		clock__counter.innerHTML = String(parseInt(input_pause.value));//todo : data from backend
+		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/8';//todo : data from backend
+		var timer;
+		clearInterval(timer);
+		timer = window.setInterval(function(){ 
+			clock__counter.innerHTML = String(parseInt(clock__counter.innerHTML) - 1); 
+			if (parseInt(clock__counter.innerHTML) <= 0) {
+				clock__counter.innerHTML = '0';
+				clearInterval(timer);
+			}
+		}, 1000);
+	}
+	//function countDown(){
+		
+		//clock__counter.innerHTML = String(parseInt(clock__counter.innerHTML) - 1);
+		/*if(clock__counter.innerHTML<=0){
+			clock__counter.innerHTML=0;
+			return ;
+		}*/
+	//}
+</script>
+
+
+
+<div class="clock">
+
+	<div class="row">
+
+		<div class="g-100">
+
+			<h1 class="clock__title">巨巨太強啦</h1>
+
+	
+
+			<div class="clock__counter"
+           id = "clock">00</div>
+
+			<div class="clock__round-counter"
+           id = "clock_round">0/8</div>
+
+		</div>
+
+	</div>	
+
+	<div class="row">
+
+		<div class="g-33">Round (in sec.) <input id="input_round" type="text" value="0"></div>
+
+		<div class="g-33">休息秒數 <input id="input_pause" type="text" value="10"></div>
+
+		<div class="g-33">組數 <input id="input_cycles" type="text" value="8"></div>
+    
+		<div class="g-50"><button class="controller__button-start"
+ id="button_start"
+ onclick="display();"                             >開始休息！</button></div>
+		<div class="g-50"><button class="controller__button-stop"
+ id="button_stop"
+ onclick="closeWindow();" 
+        >動作結束！</button></div>
+    
+
+	</div>
+
+	<div class="row">
+
+	</div>	
+
+</div>
+<!-- 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button class="btn">輸入資料</button>
+	<ul class="info">
+	</ul>
+	<script type="text/javascript">
+	</script>
+</body>
+</html>
+-->
