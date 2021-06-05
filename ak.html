@@ -98,17 +98,15 @@ a {
 	text-align: right;
 }
 
-#input_round,
 #input_pause,
 #input_cycles {
 	max-width: 100%;
-	margin: 0.25em 0 0 0;
+	margin: 0 0 0 7em ;
 	padding: 0.35em 0.5em;
 	box-shadow: inset -5px 0 0 rgba(255,160,25,0);
 	border: none;
 }
 
-#input_round:focus,
 #input_pause:focus,
 #input_cycles:focus {
 	box-shadow: inset -5px 0 0 rgba(255,160,25,1);
@@ -159,8 +157,7 @@ a {
 }
 
 .g-100,
-.g-50,
-.g-33 {
+.g-50 {
 	float: left;
 	padding: 0 1em;
 }
@@ -174,6 +171,9 @@ a {
 }
 
 .g-33 {
+	margin: 0 5em 0 5em;
+	float: left;
+	padding: 0 1em;
 	width: 33.33%;
 }
 
@@ -208,19 +208,13 @@ li{list-style: none;}
 
 	<div class="row">
 
-		<div class="g-33">休息秒數 <input id="input_pause" type="text" value="response['rest']"></div>
+		<div class="g-33">休息秒數 <input id="input_pause" type="text" value=rest></div>
 
-		<div class="g-33">組數 <input id="input_cycles" type="text" value="response['sets']"></div>
+		<div class="g-33">組數 <input id="input_cycles" type="text" value=sets></div>
     
-		<div class="g-50"><button class="controller__button-start"
- id="button_start"
- onclick="display();"                             >開始休息！</button></div>
+		<div class="g-50"><button class="controller__button-start" id="button_start" onclick="display();">開始休息！</button></div>
 
-		<div class="g-50"><button class="controller__button-stop"
- id="button_stop"
- onclick="closeWindow();" 
-        >動作結束！</button></div>
-    
+		<div class="g-50"><button class="controller__button-stop" id="button_stop" onclick="closeWindow();" >動作結束！</button></div>
 
 	</div>
 
@@ -236,7 +230,7 @@ li{list-style: none;}
 		var clock__counter = document.getElementById("clock");
 		var clock__round = document.getElementById("clock_round");
 		clock__counter.innerHTML = String(parseInt(input_pause.value));//todo : data from backend
-		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/8';//todo : data from backend
+		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/'+input_cycles.value;//todo : data from backend
     	btn.disabled="disabled";
 		var timer;
 		//clearInterval(timer);
@@ -253,7 +247,7 @@ li{list-style: none;}
 	function closeWindow(){
   		window.close();
 	}
-
+/*錯誤的ajax
 	const endpoint = "";//等大大的URL
 	$.ajax({
     	type: "GET",
@@ -267,7 +261,7 @@ li{list-style: none;}
       		console.log(thrownError);
     }
   });
-
+*/
 
 </script>
 </body>
