@@ -98,17 +98,11 @@ a {
 	text-align: right;
 }
 
-#input_pause:focus,
-#input_cycles:focus {
-	box-shadow: inset -5px 0 0 rgba(255,160,25,1);
-	transition: box-shadow 0.5s;
-} 
-
 .controller__button-start,
 .controller__button-stop {
 	display: block;
 	width: 80%;
-	margin: 4em auto 2.5em auto;
+	margin: em auto 2.5em auto;
 	padding: 1em 0;
 	background: rgb(30,180,50);
 	border-radius: 0.5em;
@@ -206,9 +200,9 @@ li{list-style: none;}
 
 	<div class="row">
 
-		<div class="g-33">休息秒數<span data-rest="{{data['rest']}}">{{data['rest']}}</span></div>
+		<div class="g-33">休息秒數<span id = rest>{{data['rest']}}</span></div>
 
-		<div class="g-34">組數<span data-sets="{{data['sets']}}">{{data['sets']}}</span></div>
+		<div class="g-34">組數<span id = sets>{{data['sets']}}</span></div>
     
 		<div class="g-50"><button class="controller__button-start" id="button_start" onclick="display();">開始休息！</button></div>
 
@@ -224,11 +218,12 @@ li{list-style: none;}
 <script type="text/javascript">
 	function display() {
 		var btn = document.getElementById("button_start");
-		var input_pause = document.getElementById("input_pause");
+		var sec__rest = document.getElementsById("rest");
+		var number__sets = document.getElementsById("sets");
 		var clock__counter = document.getElementById("clock");
 		var clock__round = document.getElementById("clock_round");
-		clock__counter.innerHTML = element.dataset.rest;//changed
-		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/'+element.dataset.sets;//changed
+		clock__counter.innerHTML = sec__rest;//changed
+		clock__round.innerHTML = String(parseInt(clock__round.innerHTML) + 1) + '/'+number__sets;//changed
     	btn.disabled="disabled";
 		var timer;
 		//clearInterval(timer);
